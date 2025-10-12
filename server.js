@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -42,6 +43,18 @@ app.post('/contact', (req, res) => {
   const { name, email, message } = req.body;
   console.log('Contact form submission:', { name, email, message });
   res.json({ success: true, message: 'Thank you for your message! We will get back to you soon.' });
+});
+
+// Password verification endpoint
+app.post('/api/verify-password', (req, res) => {
+  const { password } = req.body;
+  const correctPassword = process.env.PASSWORD;
+
+  if (password === correctPassword) {
+    res.json({ success: true, message: 'Password verified!' });
+  } else {
+    res.status(401).json({ success: false, message: 'Incorrect password!' });
+  }
 });
 
 app.get('/api/services', (req, res) => {

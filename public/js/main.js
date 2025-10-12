@@ -2,12 +2,15 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Fake Agency app loaded');
-  
+
   // Add smooth scrolling
   addSmoothScrolling();
-  
+
   // Add active nav link highlighting
   highlightActiveNavLink();
+
+  // Initialize password modal
+  initPasswordModal();
 });
 
 // Smooth scrolling for anchor links
@@ -85,4 +88,93 @@ function logPageView() {
 }
 
 logPageView();
+
+// Password Modal Functions
+function initPasswordModal() {
+  const modal = document.getElementById('passwordModal');
+  const exploreBtn = document.getElementById('exploreBtn');
+  const closeBtn = document.querySelector('.close');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  const passwordInput = document.getElementById('passwordInput');
+  const errorMessage = document.getElementById('errorMessage');
+
+  // Open modal when Explore button is clicked
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', () => {
+      modal.classList.add('show');
+      passwordInput.focus();
+      errorMessage.classList.remove('show');
+      errorMessage.textContent = '';
+      passwordInput.value = '';
+    });
+  }
+
+  // Close modal when close button is clicked
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove('show');
+  });
+
+  // Close modal when cancel button is clicked
+  cancelBtn.addEventListener('click', () => {
+    modal.classList.remove('show');
+  });
+
+  // Close modal when clicking outside the modal content
+  window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.classList.remove('show');
+    }
+  });
+
+  // Submit password
+  submitBtn.addEventListener('click', verifyPassword);
+
+  // Allow Enter key to submit
+  passwordInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      verifyPassword();
+    }
+  });
+}
+
+// Verify password function
+async function verifyPassword() {
+  const passwordInput = document.getElementById('passwordInput');
+  const errorMessage = document.getElementById('errorMessage');
+  const password = passwordInput.value;
+
+  if (!password) {
+    errorMessage.textContent = 'Please enter a password';
+    errorMessage.classList.add('show');
+    return;
+  }
+
+  try {
+    const response = await fetch('/api/verify-password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      // Password is correct, redirect to services
+      window.location.href = '/services';
+    } else {
+      // Password is incorrect
+      errorMessage.textContent = data.message || 'Incorrect password!';
+      errorMessage.classList.add('show');
+      passwordInput.value = '';
+      passwordInput.focus();
+    }
+  } catch (error) {
+    console.error('Error verifying password:', error);
+    errorMessage.textContent = 'An error occurred. Please try again.';
+    errorMessage.classList.add('show');
+  }
+}
 
