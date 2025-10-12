@@ -1,0 +1,48 @@
+<%- include('header') %>
+
+<main>
+  <section class="services-section">
+    <div class="container">
+      <h2>Our Services</h2>
+      <p class="subtitle">We offer a wide range of digital services to help your business grow</p>
+      
+      <div class="services-grid">
+        <% services.forEach(service => { %>
+          <div class="service-card">
+            <h3><%= service.name %></h3>
+            <p><%= service.description %></p>
+            <a href="#" class="btn btn-small">Learn More</a>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <div class="container">
+      <h2>Pricing</h2>
+      <p class="subtitle">Transparent pricing for all our services</p>
+      <div id="pricing-list"></div>
+    </div>
+  </section>
+</main>
+
+<%- include('footer') %>
+
+<script>
+  // Fetch and display pricing
+  fetch('/api/services')
+    .then(response => response.json())
+    .then(data => {
+      const pricingList = document.getElementById('pricing-list');
+      pricingList.innerHTML = '<div class="pricing-grid">' + 
+        data.map(service => `
+          <div class="pricing-card">
+            <h4>${service.name}</h4>
+            <p class="price">${service.price}</p>
+          </div>
+        `).join('') + 
+        '</div>';
+    });
+</script>
+
