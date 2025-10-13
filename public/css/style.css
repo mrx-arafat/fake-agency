@@ -70,26 +70,10 @@ body {
 /* Main Content */
 main {
   min-height: calc(100vh - 200px);
-  padding: 2rem 0;
+  padding: 0;
 }
 
-/* Hero Section */
-.hero {
-  background: linear-gradient(135deg, var(--primary-color), #0056b3);
-  color: white;
-  padding: 6rem 0;
-  text-align: center;
-}
-
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-}
+/* Hero Section - Styles moved to hero.css */
 
 /* Buttons */
 .btn {
