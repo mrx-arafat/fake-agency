@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
   opacity: 0.8;
 }
 
@@ -129,7 +129,7 @@
   top: 40%;
   right: 20%;
   animation-delay: 2s;
-  background: linear-gradient(45deg, #f59e0b, #f97316);
+  background: linear-gradient(45deg, #22c55e, #16a34a);
   opacity: 0.7;
 }
 
@@ -139,7 +139,7 @@
   bottom: 20%;
   left: 30%;
   animation-delay: 4s;
-  background: linear-gradient(45deg, #ec4899, #be185d);
+  background: linear-gradient(45deg, #84cc16, #65a30d);
   opacity: 0.6;
 }
 
