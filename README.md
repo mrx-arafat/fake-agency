@@ -1,126 +1,67 @@
-# Fake Agency - Node.js Web App
+# Fake Agency Server-Side Rendered (SSR) Node.js App
 
-A simple Node.js web application built with Express.js and EJS templating engine. This is a demo website for a fictional digital agency.
+A stunning, highly modern Node.js application using Express and EJS for Server-Side Rendering (SSR). This application uses a vibrant, dark-mode glassmorphism design with `Outfit` typography and smooth animations to provide a premium user experience.
 
 ## Features
 
-- **Home Page**: Hero section with call-to-action
-- **Services Page**: Display of agency services with pricing information
-- **About Page**: Information about the agency
-- **Contact Page**: Contact form with form validation
-- **Responsive Design**: Mobile-friendly layout
-- **API Endpoints**: RESTful API for services data
+- **Modern UI**: Deep dark aesthetic with dynamic glassmorphism and beautiful mesh gradients.
+- **Server-Side Rendered (SSR)**: Built entirely using EJS templating. Views are rendered server-side.
+- **Node.js Express Backend**: Simple, fast, and lightweight MVC-style architecture.
+- **API Ready**: Provides endpoints for fetching services or authenticating forms.
 
-## Project Structure
+## Quick Start (Local Development)
 
-```
-fake-agency/
-├── server.js              # Main Express server
-├── package.json           # Project dependencies
-├── views/                 # EJS templates
-│   ├── header.ejs        # Navigation header
-│   ├── footer.ejs        # Footer
-│   ├── index.ejs         # Home page
-│   ├── services.ejs      # Services page
-│   ├── about.ejs         # About page
-│   ├── contact.ejs       # Contact page
-│   ├── 404.ejs           # 404 error page
-│   └── error.ejs         # Error page
-├── public/               # Static files
-│   ├── css/
-│   │   └── style.css     # Main stylesheet
-│   └── js/
-│       └── main.js       # Client-side JavaScript
-└── README.md             # This file
-```
+### 1. Install dependencies
 
-## Installation
-
-1. Navigate to the project directory:
-```bash
-cd fake-agency
-```
-
-2. Install dependencies:
 ```bash
 npm install
 ```
 
-## Running the Application
+*(Dependencies include latest `express`, `ejs`, and `dotenv`)*
 
-Start the development server:
+### 2. Set up environment variables
+
+Copy `.env.example` to a `.env` file and set the required variables:
+
+```bash
+cp .env.example .env
+```
+Ensure you set your server port or password logic inside `.env`.
+
+### 3. Run the application
+
 ```bash
 npm start
 ```
 
-or
-
+Or for development:
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:3000`
+Visit `http://localhost:3000` to see the application running.
 
-## Available Routes
+## Deployment with OpenClaw + xCloud
 
-- `GET /` - Home page
-- `GET /services` - Services page
-- `GET /about` - About page
-- `GET /contact` - Contact page
-- `POST /contact` - Submit contact form
-- `GET /api/services` - API endpoint for services data (JSON)
+This is a **Node.js Server-Side Rendered (SSR)** application. No complex build step is initially required to run this because it does not use a bundler (like Webpack or Vite). 
 
-## Technologies Used
+### Is this an SSR App?
+**Yes.** Content is rendered dynamically on the server via EJS (`views/` folder) before being sent to the browser. 
 
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework
-- **EJS** - Templating engine
-- **CSS3** - Styling
-- **Vanilla JavaScript** - Client-side interactivity
+### Is a Web Root needed?
+**No.** Since `server.js` and `package.json` are placed directly in the main repository root, you should leave the "Web Root Path" field **blank** (or `/`) when configuring xCloud.
 
-## Features Included
+### xCloud Deployment Steps
 
-### Frontend
-- Responsive navigation bar
-- Hero section with call-to-action
-- Feature cards
-- Service listings
-- Pricing information
-- Contact form with validation
-- Footer with contact information
+Follow these instructions to deploy this project via xCloud Managed Hosting:
 
-### Backend
-- Express server with routing
-- EJS template rendering
-- JSON API endpoint
-- Form submission handling
-- Error handling middleware
-- 404 page handling
-
-## Customization
-
-### Change Port
-Set the `PORT` environment variable:
-```bash
-PORT=8000 npm start
-```
-
-### Modify Services
-Edit the services array in `server.js` to add or remove services.
-
-### Update Styling
-Modify `public/css/style.css` to customize the appearance.
-
-### Add New Pages
-1. Create a new EJS file in the `views/` directory
-2. Add a new route in `server.js`
-3. Add a navigation link in `views/header.ejs`
-
-## License
-
-ISC
-
-## Author
-
-Created as a demo project
-
+1. **Create Node.js App**: In xCloud dashboard, click "Create Site", select "Node.js" and choose **Clone a Git Repository**.
+2. **Project Settings**:
+   - Enable **Server-Side Rendering (SSR)** toggle since this app depends on Express serving dynamically rendered EJS HTML pages.
+   - **Port**: `3000` (or the port defined in your `.env`)
+   - **Start Command**: `npm start`
+   - **Web Root Path**: *(Leave Blank)*
+3. **Connect Git**: Connect your GitHub/GitLab account, choose your `fake-agency` repository and the main branch.
+4. **Push to Deploy**: Enable **Push to Deploy** so your xCloud site updates automatically whenever you push code.
+5. **Environment Configuration**: Set your `.env` contents within the xCloud Environment Editor. 
+6. **Deploy**: Start the deployment! xCloud will run `npm install` automatically, followed by your start command to spin up the server beautifully. 
