@@ -4,7 +4,7 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
-  background: radial-gradient(circle at center, rgba(15, 17, 35, 0.8) 0%, var(--bg-color) 100%);
+  background: radial-gradient(circle at center, rgba(6, 24, 16, 0.8) 0%, var(--bg-color) 100%);
   overflow: hidden;
   padding: 100px 0;
 }
@@ -40,7 +40,7 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(to right, #ffffff, #c7d2fe);
+  background: linear-gradient(to right, #ffffff, #a7f3d0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fadeInUp 0.8s ease-out;
@@ -88,7 +88,7 @@
   height: 380px;
   top: 10%;
   left: 10%;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(79, 70, 229, 0.1));
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.1));
   animation: float 6s ease-in-out infinite;
   z-index: 3;
 }
@@ -99,7 +99,7 @@
   bottom: 0%;
   right: 10%;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(129, 140, 248, 0.2), rgba(79, 70, 229, 0.2));
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.2), rgba(5, 150, 105, 0.2));
   animation: float 8s ease-in-out infinite reverse;
   z-index: 2;
 }
@@ -110,7 +110,7 @@
   top: 0%;
   right: 0%;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-  background: linear-gradient(135deg, rgba(129, 140, 248, 0.2), rgba(99, 102, 241, 0.1));
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.2), rgba(16, 185, 129, 0.1));
   animation: floatShape 10s ease-in-out infinite;
   z-index: 1;
 }
